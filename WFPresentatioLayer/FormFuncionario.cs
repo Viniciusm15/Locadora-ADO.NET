@@ -46,7 +46,7 @@ namespace WFPresentatioLayer
             if (response.Sucesso)
             {
                 MessageBox.Show("Funcionário cadastrado com sucesso!");
-                dtgFuncionario.DataSource = funcionarioBLL.GetData();
+                dtgFuncionario.DataSource = funcionarioBLL.GetData().Data;
             }
             else
             {

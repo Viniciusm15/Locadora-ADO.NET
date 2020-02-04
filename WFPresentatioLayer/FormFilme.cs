@@ -59,7 +59,7 @@ namespace WFPresentatioLayer
             if (response.Sucesso)
             {
                 MessageBox.Show("Filme cadastrado com sucesso!");
-                dtgFilmes.DataSource = filmeBLL.GetFilmes();
+                dtgFilmes.DataSource = filmeBLL.GetFilmes().Data;
             }
             else
             {

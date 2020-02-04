@@ -18,7 +18,6 @@ namespace WFPresentationLayer
         {
             InitializeComponent();
         }
-
         
 
         private GeneroBLL generoBLL = new GeneroBLL();

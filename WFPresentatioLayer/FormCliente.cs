@@ -39,7 +39,7 @@ namespace WFPresentatioLayer
             if (response.Sucesso)
             {
                 MessageBox.Show("Cliente cadastrado com sucesso!");
-                dtgClientes.DataSource = clienteBLL.GetData();
+                dtgClientes.DataSource = clienteBLL.GetData().Data;
             }
             else
             {
