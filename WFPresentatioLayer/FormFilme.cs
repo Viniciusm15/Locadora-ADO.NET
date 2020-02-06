@@ -106,28 +106,31 @@ namespace WFPresentatioLayer
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
+            dtgFilmes.DataSource = null;
             DataResponse<FilmeResultSet> response = null;
+
             if (cmbFiltro.Text == "Nome")
             {
                 response = filmeBLL.GetFilmesByName(txtPesquisa.Text);
             }
             else if (cmbFiltro.Text == "Gênero")
             {
-                response = filmeBLL.GetFilmesByGener(((Genero)cmbClassificacao.SelectedItem).ID);
+                response = filmeBLL.GetFilmesByGener(((Genero)cmbPesquisa.SelectedItem).ID);
             }
             else
             {
-                response = filmeBLL.GetFilmesByClassification(((Classificacao)cmbClassificacao.SelectedItem));
+                response = filmeBLL.GetFilmesByClassification(((Classificacao)cmbPesquisa.SelectedItem));
             }
 
             if (response.Sucesso)
             {
-                dtgFilmes.DataSource = null;
-                dtgFilmes.DataSource = response.Data;
-
                 if (response.Data.Count == 0)
                 {
                     MessageBox.Show("Não foram encontrados dados!");
+                }
+                else
+                {
+                    dtgFilmes.DataSource = response.Data;
                 }
             }
             else

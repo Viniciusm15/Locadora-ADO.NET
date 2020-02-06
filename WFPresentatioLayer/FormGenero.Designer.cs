@@ -40,7 +40,7 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnCadastrar.BackColor = System.Drawing.Color.White;
             this.btnCadastrar.Location = new System.Drawing.Point(32, 94);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(290, 56);
@@ -84,7 +84,7 @@
             // 
             // btnAtualizar
             // 
-            this.btnAtualizar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnAtualizar.BackColor = System.Drawing.Color.White;
             this.btnAtualizar.Location = new System.Drawing.Point(32, 202);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(290, 56);
@@ -95,7 +95,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnExcluir.BackColor = System.Drawing.Color.White;
             this.btnExcluir.Location = new System.Drawing.Point(32, 278);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(290, 56);
@@ -106,7 +106,7 @@
             // 
             // btnLimpar
             // 
-            this.btnLimpar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnLimpar.BackColor = System.Drawing.Color.White;
             this.btnLimpar.Location = new System.Drawing.Point(32, 354);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(290, 56);
@@ -119,7 +119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(791, 422);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnExcluir);

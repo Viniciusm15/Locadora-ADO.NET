@@ -73,6 +73,7 @@ namespace BusinessLogicalLayer
                 response.Sucesso = false;
                 return response;
             }
+            item.Password = HashUtils.HashPassword(item.Password);
 
             return funcionarioDAL.Update(item);
         }

@@ -141,7 +141,7 @@ namespace DataAccessLayer
             connection.ConnectionString = SqlData.ConnectionString;
 
             SqlCommand sqlCommand = new SqlCommand();
-            sqlCommand.CommandText = "DELETE FROM FUNCIONARIES WHERE ID = @ID";
+            sqlCommand.CommandText = "DELETE FROM FUNCTIONARIES WHERE ID = @ID";
             sqlCommand.Parameters.AddWithValue(@"ID", id);
             sqlCommand.Connection = connection;
 
