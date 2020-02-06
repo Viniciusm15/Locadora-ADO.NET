@@ -1,8 +1,10 @@
-﻿using Entities;
+﻿using DataAccessLayer;
+using Entities;
 using Entities.Enums;
 using Entities.ResultSets;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +32,7 @@ namespace BusinessLogicalLayer
         {
             throw new NotImplementedException();
         }
+
         public Response Delete(int id)
         {
             throw new NotImplementedException();
@@ -37,7 +40,41 @@ namespace BusinessLogicalLayer
 
         public DataResponse<FilmeResultSet> GetFilmes()
         {
-            throw new NotImplementedException();
+            using (LocadoraDbContext db = new LocadoraDbContext())
+            {
+                try
+                {
+                    List<FilmeResultSet> result = db.Filmes.Select(f => new FilmeResultSet()
+                    {
+                        ID = f.ID,
+                        Nome = f.Nome,
+                        Classificacao = f.Classificacao,
+                        Genero = f.Genero.Nome
+                    }).ToList();
+
+                    DataResponse<FilmeResultSet> response = new DataResponse<FilmeResultSet>();
+                    response.Data = result;
+                    response.Sucesso = true;
+                    return response;
+                }
+                catch (Exception ex)
+                {
+                    DataResponse<FilmeResultSet> response = new DataResponse<FilmeResultSet>();
+                    response.Sucesso = false;
+
+                    if (ex.Message.Contains("FK"))
+                    {
+                        response.Erros.Add("Gênero não encontrado.");
+                    }
+                    else
+                    {
+                        response.Erros.Add("Erro no banco de dados, contate o ADM!");
+                        File.WriteAllText("log.txt", ex.Message);
+                        return response;
+                    }
+                    return response;
+                }
+            }
         }
 
         public DataResponse<FilmeResultSet> GetFilmesByName(string nome)

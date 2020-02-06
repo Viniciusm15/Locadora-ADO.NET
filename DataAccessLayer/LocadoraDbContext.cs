@@ -17,10 +17,11 @@ namespace DataAccessLayer
             Database.SetInitializer(new LocadoraTestStrategy());
         }
 
-        public DbSet<Cliente> Clientes { get; set; }
-        public DbSet<Funcionario> Funcionarios { get; set; }
-        public DbSet<Genero> Generos { get; set; }
-        public DbSet<Locacao> Locacoes { get; set; }
+        public DbSet<FilmeEF> Filmes{ get; set; }
+        public DbSet<ClienteEF> Clientes { get; set; }
+        public DbSet<FuncionarioEF> Funcionarios { get; set; }
+        public DbSet<GeneroEF> Generos { get; set; }
+        public DbSet<LocacaoEF> Locacoes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

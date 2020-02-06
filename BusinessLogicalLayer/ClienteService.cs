@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using DataAccessLayer;
+using Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +22,18 @@ namespace BusinessLogicalLayer
 
         public Response Insert(ClienteEF item)
         {
-            throw new NotImplementedException();
+            // ---- 
+            using (LocadoraDbContext db = new LocadoraDbContext())
+            {
+
+            }
         }
 
         public Response Update(ClienteEF item)
         {
             throw new NotImplementedException();
         }
+
         public Response Delete(int id)
         {
             throw new NotImplementedException();
