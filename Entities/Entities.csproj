@@ -45,6 +45,7 @@
     <Compile Include="Cliente.cs" />
     <Compile Include="DataResponseEF.cs" />
     <Compile Include="DataResponse.cs" />
+    <Compile Include="Enums\ClassificacaoEF .cs" />
     <Compile Include="Enums\Classificacao.cs" />
     <Compile Include="ExtensionsEF.cs" />
     <Compile Include="Extensions.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Genero.cs" />
     <Compile Include="IEntityCRUD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultSets\FilmeResultSetEF .cs" />
     <Compile Include="ResultSets\FilmeResultSet.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
