@@ -56,6 +56,9 @@
     <Compile Include="FilmeBLL.cs" />
     <Compile Include="FuncionarioBLL.cs" />
     <Compile Include="GeneroBLL.cs" />
+    <Compile Include="Interfaces\IFilmeServiceEF.cs" />
+    <Compile Include="Interfaces\IFuncionarioServiceEF .cs" />
+    <Compile Include="Interfaces\ILocacaoServiceEF .cs" />
     <Compile Include="LocacaoBLL.cs" />
     <Compile Include="Mappings\ClienteMapConfig.cs" />
     <Compile Include="Mappings\FilmeMapConfig.cs" />
