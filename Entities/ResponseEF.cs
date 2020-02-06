@@ -9,7 +9,7 @@ namespace Entities
     /// <summary>
     /// Representa a resposta de uma operação de banco de dados. (envolve Insert, Update, Delete)
     /// </summary> 
-    public class Response
+    public class ResponseEF
     {
         public bool Sucesso { get; set; }
         public List<string> Erros { get; set; }
@@ -27,7 +27,7 @@ namespace Entities
             return this.Erros.Count > 0;
         }
 
-        public Response()
+        public ResponseEF()
         {
             this.Erros = new List<string>();
         }
