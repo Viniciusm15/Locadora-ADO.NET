@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class DataResponse<T> : Response
+    public class DataResponseEF<T> : Response
     {
         public List<T> Data { get; set; }
     }

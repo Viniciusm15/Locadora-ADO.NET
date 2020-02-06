@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class Locacao
+    public class LocacaoEF
     {
         public int ID { get; set; }
         public Cliente Cliente { get; set; }
@@ -19,7 +19,7 @@ namespace Entities
         public List<Filme> filmes { get; set; }
         public bool FoiPago { get; set; }
 
-        public Locacao()
+        public LocacaoEF()
         {
             this.filmes = new List<Filme>();
         }
