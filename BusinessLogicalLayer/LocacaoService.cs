@@ -7,28 +7,33 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicalLayer
 {
-    public class ClienteService : IEntityCRUDEF<ClienteEF>
+    public class LocacaoService : IEntityCRUDEF<LocacaoEF>, ILocacaoServiceEF
     {
-        public DataResponse<ClienteEF> GetByID(int id)
+        public DataResponse<LocacaoEF> GetByID(int id)
         {
             throw new NotImplementedException();
         }
 
-        public DataResponse<ClienteEF> GetData()
+        public DataResponse<LocacaoEF> GetData()
         {
             throw new NotImplementedException();
         }
 
-        public Response Insert(ClienteEF item)
+        public Response Insert(LocacaoEF item)
         {
             throw new NotImplementedException();
         }
 
-        public Response Update(ClienteEF item)
+        public Response Update(LocacaoEF item)
         {
             throw new NotImplementedException();
         }
         public Response Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Response EfeturarLocacao(Locacao locacao)
         {
             throw new NotImplementedException();
         }

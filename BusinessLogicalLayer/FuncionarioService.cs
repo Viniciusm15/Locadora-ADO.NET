@@ -7,28 +7,33 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicalLayer
 {
-    public class ClienteService : IEntityCRUDEF<ClienteEF>
+    public class FuncionarioService : IEntityCRUDEF<FuncionarioEF>, IFuncionarioServiceEF
     {
-        public DataResponse<ClienteEF> GetByID(int id)
+        public DataResponse<FuncionarioEF> GetByID(int id)
         {
             throw new NotImplementedException();
         }
 
-        public DataResponse<ClienteEF> GetData()
+        public DataResponse<FuncionarioEF> GetData()
         {
             throw new NotImplementedException();
         }
 
-        public Response Insert(ClienteEF item)
+        public Response Insert(FuncionarioEF item)
         {
             throw new NotImplementedException();
         }
 
-        public Response Update(ClienteEF item)
+        public Response Update(FuncionarioEF item)
         {
             throw new NotImplementedException();
         }
         public Response Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DataResponse<Funcionario> Autenticar(string email, string senha)
         {
             throw new NotImplementedException();
         }

@@ -7,28 +7,29 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicalLayer
 {
-    public class ClienteService : IEntityCRUDEF<ClienteEF>
+    public class GeneroService : IEntityCRUDEF<GeneroEF>
     {
-        public DataResponse<ClienteEF> GetByID(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public DataResponse<ClienteEF> GetData()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Response Insert(ClienteEF item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Response Update(ClienteEF item)
-        {
-            throw new NotImplementedException();
-        }
         public Response Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DataResponse<GeneroEF> GetByID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DataResponse<GeneroEF> GetData()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Response Insert(GeneroEF item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Response Update(GeneroEF item)
         {
             throw new NotImplementedException();
         }

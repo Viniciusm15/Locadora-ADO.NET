@@ -55,13 +55,17 @@
     <Compile Include="ClienteBLL.cs" />
     <Compile Include="ClienteService.cs" />
     <Compile Include="FilmeBLL.cs" />
+    <Compile Include="FilmeService.cs" />
     <Compile Include="FuncionarioBLL.cs" />
+    <Compile Include="FuncionarioService.cs" />
     <Compile Include="GeneroBLL.cs" />
+    <Compile Include="GeneroService.cs" />
     <Compile Include="Interfaces\IEntityCRUDEF.cs" />
     <Compile Include="Interfaces\IFilmeServiceEF.cs" />
     <Compile Include="Interfaces\IFuncionarioServiceEF .cs" />
     <Compile Include="Interfaces\ILocacaoServiceEF .cs" />
     <Compile Include="LocacaoBLL.cs" />
+    <Compile Include="LocacaoService.cs" />
     <Compile Include="Mappings\ClienteMapConfig.cs" />
     <Compile Include="Mappings\FilmeMapConfig.cs" />
     <Compile Include="Mappings\FuncionarioMapConfig.cs" />
