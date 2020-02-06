@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public interface IFilmeService
+    public interface IFilmeServiceEF
     {
         DataResponse<FilmeResultSet> GetFilmes();
         DataResponse<FilmeResultSet> GetFilmesByName(string nome);

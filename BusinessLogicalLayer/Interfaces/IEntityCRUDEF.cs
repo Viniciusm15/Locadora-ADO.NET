@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Entities
 {
     //internal*
-    public interface IEntityCRUD<T>
+    public interface IEntityCRUDEF<T>
     {
         Response Insert(T item);
         Response Update(T item);

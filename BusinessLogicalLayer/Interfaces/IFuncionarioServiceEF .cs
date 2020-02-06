@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public interface IFuncionarioService
+    public interface IFuncionarioServiceEF
     {
         DataResponse<Funcionario> Autenticar(string email, string senha);
     }

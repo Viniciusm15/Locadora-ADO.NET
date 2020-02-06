@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicalLayer
 {
-    public class ClienteService
+    public class ClienteService : IEntityCRUDEF
     {
 
 

@@ -57,6 +57,7 @@
     <Compile Include="FilmeBLL.cs" />
     <Compile Include="FuncionarioBLL.cs" />
     <Compile Include="GeneroBLL.cs" />
+    <Compile Include="Interfaces\IEntityCRUDEF.cs" />
     <Compile Include="Interfaces\IFilmeServiceEF.cs" />
     <Compile Include="Interfaces\IFuncionarioServiceEF .cs" />
     <Compile Include="Interfaces\ILocacaoServiceEF .cs" />

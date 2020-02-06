@@ -54,7 +54,6 @@
     <Compile Include="FuncionarioEF.cs" />
     <Compile Include="Funcionario.cs" />
     <Compile Include="GeneroEF.cs" />
-    <Compile Include="IEntityCRUDEF.cs" />
     <Compile Include="IFilmeService.cs" />
     <Compile Include="IFuncionarioService.cs" />
     <Compile Include="ILocacaoService.cs" />

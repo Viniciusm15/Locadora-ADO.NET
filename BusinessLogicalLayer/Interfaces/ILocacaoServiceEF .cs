@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public interface ILocacaoService
+    public interface ILocacaoServiceEF
     {
         Response EfeturarLocacao(Locacao locacao);
     }
