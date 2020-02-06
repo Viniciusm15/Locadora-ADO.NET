@@ -23,6 +23,7 @@ namespace BusinessLogicalLayer
                 return response;
             }
 
+            //db.Clientes
             ClienteDAL clienteDAL = new ClienteDAL();
             return clienteDAL.Insert(item);
         }
