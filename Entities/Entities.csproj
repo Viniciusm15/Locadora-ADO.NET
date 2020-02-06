@@ -41,12 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClienteEF.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="DataResponse.cs" />
     <Compile Include="Enums\Classificacao.cs" />
+    <Compile Include="ExtensionsEF.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="FilmeEF.cs" />
     <Compile Include="Filme.cs" />
+    <Compile Include="FuncionarioEF.cs" />
     <Compile Include="Funcionario.cs" />
+    <Compile Include="GeneroEF.cs" />
     <Compile Include="IFilmeService.cs" />
     <Compile Include="IFuncionarioService.cs" />
     <Compile Include="ILocacaoService.cs" />
