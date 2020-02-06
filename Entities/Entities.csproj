@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ClienteEF.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="DataResponseEF.cs" />
     <Compile Include="DataResponse.cs" />
     <Compile Include="Enums\Classificacao.cs" />
     <Compile Include="ExtensionsEF.cs" />
@@ -52,10 +53,16 @@
     <Compile Include="FuncionarioEF.cs" />
     <Compile Include="Funcionario.cs" />
     <Compile Include="GeneroEF.cs" />
+    <Compile Include="IEntityCRUDEF.cs" />
+    <Compile Include="IFilmeServiceEF.cs" />
     <Compile Include="IFilmeService.cs" />
+    <Compile Include="IFuncionarioServiceEF .cs" />
     <Compile Include="IFuncionarioService.cs" />
+    <Compile Include="ILocacaoServiceEF .cs" />
     <Compile Include="ILocacaoService.cs" />
+    <Compile Include="LocacaoEF .cs" />
     <Compile Include="Locacao.cs" />
+    <Compile Include="ResponseEF.cs" />
     <Compile Include="Response.cs" />
     <Compile Include="Genero.cs" />
     <Compile Include="IEntityCRUD.cs" />
