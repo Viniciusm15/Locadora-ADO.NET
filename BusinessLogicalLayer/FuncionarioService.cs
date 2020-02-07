@@ -343,6 +343,7 @@ namespace BusinessLogicalLayer
                     response.Erros.Add("A senha deve estar no formato correto. (Pelo menos uma UpperCase e um caracter especial)");
                 }
             }
+
             using (LocadoraDbContext db = new LocadoraDbContext())
             {
 

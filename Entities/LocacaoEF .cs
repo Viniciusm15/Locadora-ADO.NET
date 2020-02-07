@@ -18,12 +18,12 @@ namespace Entities
         public DateTime DataLocacao { get; set; }
         public DateTime DataDevolucaoPrevista { get; set; }
         public DateTime? DataDevolucao { get; set; }
-        public List<FilmeEF> filmes { get; set; }
+        public List<FilmeEF> Filmes { get; set; }
         public bool FoiPago { get; set; }
 
         public LocacaoEF()
         {
-            this.filmes = new List<FilmeEF>();
+            this.Filmes = new List<FilmeEF>();
         }
     }
 }

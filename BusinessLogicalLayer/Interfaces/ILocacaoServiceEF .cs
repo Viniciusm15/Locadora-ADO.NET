@@ -8,6 +8,6 @@ namespace Entities
 {
     public interface ILocacaoServiceEF
     {
-        Response EfeturarLocacao(Locacao locacao);
+        Response EfeturarLocacao(LocacaoEF locacao);
     }
 }
