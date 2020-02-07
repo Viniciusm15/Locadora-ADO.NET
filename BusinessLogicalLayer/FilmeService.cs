@@ -13,79 +13,6 @@ namespace BusinessLogicalLayer
 {
     public class FilmeService : IEntityCRUDEF<FilmeEF>, IFilmeServiceEF
     {
-        public DataResponse<FilmeEF> GetByID(int id)
-        {
-            DataResponse<FilmeEF> dResponse = new DataResponse<FilmeEF>();
-
-            using (LocadoraDbContext db = new LocadoraDbContext())
-            {
-                try
-                {
-                    FilmeEF filme = db.Filmes.Find(id);
-
-                    List<FilmeEF> filmes = new List<FilmeEF>();
-                    filmes.Add(filme);
-
-                    dResponse.Data = filmes;
-                    dResponse.Sucesso = true;
-                    return dResponse;
-                }
-                catch (Exception ex)
-                {
-                    //Logar o erro pro ADM ter acesso.
-                    File.WriteAllText("log.txt", ex.Message);
-
-                    dResponse.Sucesso = false;
-                    dResponse.Erros.Add("Falha ao acessar o banco de dados, contate o suporte.");
-                    return dResponse;
-                }
-            }
-        }
-
-        public DataResponse<FilmeEF> GetData()
-        {
-            DataResponse<FilmeEF> dResponse = new DataResponse<FilmeEF>();
-
-            using (LocadoraDbContext db = new LocadoraDbContext())
-            {
-                try
-                {
-                    List<FilmeEF> filmes = db.Filmes.Select(f => new FilmeEF()
-                    {
-                        ID = f.ID,
-                        Nome = f.Nome,
-                        Classificacao = f.Classificacao,
-                        DataLancamento = f.DataLancamento,
-                        Duracao = f.Duracao,
-                        GeneroID = f.GeneroID,
-                        Genero = f.Genero
-
-                    }).ToList();
-
-                    dResponse.Data = filmes;
-                    dResponse.Sucesso = true;
-                    return dResponse;
-                }
-                catch (Exception ex)
-                {
-
-                    dResponse.Sucesso = false;
-
-                    if (ex.Message.Contains("FK"))
-                    {
-                        dResponse.Erros.Add("FIlme não encontrado.");
-                    }
-                    else
-                    {
-                        dResponse.Erros.Add("Erro no banco de dados, contate o ADM!");
-                        File.WriteAllText("log.txt", ex.Message);
-                        return dResponse;
-                    }
-                    return dResponse;
-                }
-            }
-        }
-
         public Response Insert(FilmeEF item)
         {
             Response response = Validate(item);
@@ -142,7 +69,7 @@ namespace BusinessLogicalLayer
                 {
                     db.Entry<FilmeEF>(item).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
-                    
+
                     response.Sucesso = true;
                     return response;
                 }
@@ -201,6 +128,79 @@ namespace BusinessLogicalLayer
             }
         }
 
+        public DataResponse<FilmeEF> GetData()
+        {
+            DataResponse<FilmeEF> dResponse = new DataResponse<FilmeEF>();
+
+            using (LocadoraDbContext db = new LocadoraDbContext())
+            {
+                try
+                {
+                    List<FilmeEF> filmes = db.Filmes.Select(f => new FilmeEF()
+                    {
+                        ID = f.ID,
+                        Nome = f.Nome,
+                        Classificacao = f.Classificacao,
+                        DataLancamento = f.DataLancamento,
+                        Duracao = f.Duracao,
+                        GeneroID = f.GeneroID,
+                        Genero = f.Genero
+
+                    }).ToList();
+
+                    dResponse.Data = filmes;
+                    dResponse.Sucesso = true;
+                    return dResponse;
+                }
+                catch (Exception ex)
+                {
+
+                    dResponse.Sucesso = false;
+
+                    if (ex.Message.Contains("FK"))
+                    {
+                        dResponse.Erros.Add("FIlme não encontrado.");
+                    }
+                    else
+                    {
+                        dResponse.Erros.Add("Erro no banco de dados, contate o ADM!");
+                        File.WriteAllText("log.txt", ex.Message);
+                        return dResponse;
+                    }
+                    return dResponse;
+                }
+            }
+        }
+
+        public DataResponse<FilmeEF> GetByID(int id)
+        {
+            DataResponse<FilmeEF> dResponse = new DataResponse<FilmeEF>();
+
+            using (LocadoraDbContext db = new LocadoraDbContext())
+            {
+                try
+                {
+                    FilmeEF filme = db.Filmes.Find(id);
+
+                    List<FilmeEF> filmes = new List<FilmeEF>();
+                    filmes.Add(filme);
+
+                    dResponse.Data = filmes;
+                    dResponse.Sucesso = true;
+                    return dResponse;
+                }
+                catch (Exception ex)
+                {
+                    //Logar o erro pro ADM ter acesso.
+                    File.WriteAllText("log.txt", ex.Message);
+
+                    dResponse.Sucesso = false;
+                    dResponse.Erros.Add("Falha ao acessar o banco de dados, contate o suporte.");
+                    return dResponse;
+                }
+            }
+        }
+
         public DataResponse<FilmeResultSet> GetFilmes()
         {
             DataResponse<FilmeResultSet> response = new DataResponse<FilmeResultSet>();
@@ -243,6 +243,14 @@ namespace BusinessLogicalLayer
         public DataResponse<FilmeResultSet> GetFilmesByName(string nome)
         {
             DataResponse<FilmeResultSet> response = new DataResponse<FilmeResultSet>();
+
+            if (string.IsNullOrWhiteSpace(nome))
+            {
+                response.Sucesso = false;
+                response.Erros.Add("Nome deve ser informado.");
+                return response;
+            }
+            nome = nome.Trim();
 
             using (LocadoraDbContext db = new LocadoraDbContext())
             {
