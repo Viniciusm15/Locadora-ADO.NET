@@ -256,7 +256,7 @@ namespace BusinessLogicalLayer
             {
                 try
                 {
-                    List<FilmeResultSet> filmes = db.Filmes.Select(f => new FilmeResultSet()
+                    List<FilmeResultSet> filmes = db.Filmes.Where(f=> f.Nome.Contains(nome)).Select(f => new FilmeResultSet()
                     {
                         ID = f.ID,
                         Nome = f.Nome,

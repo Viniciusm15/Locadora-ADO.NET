@@ -36,7 +36,7 @@ namespace BusinessLogicalLayer
 
         public DataResponse<Funcionario> Autenticar(string email, string senha)
         {
-            throw new NotImplementedException();
+           
         }
     }
 }
