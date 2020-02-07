@@ -9,7 +9,6 @@ namespace Entities
     public class Funcionario
     {
         public int ID { get; set; }
-
         public string Name { get; set; }
         public DateTime BirthDate { get; set; }
         public string CPF { get; set; }
