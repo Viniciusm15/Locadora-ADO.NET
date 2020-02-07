@@ -263,7 +263,7 @@ namespace BusinessLogicalLayer
                         Genero = f.Genero.Nome
                     }).ToList();
 
-                    response.Data = filmes;
+                    response.Data = result;
                     response.Sucesso = true;
                     return response;
                 }
