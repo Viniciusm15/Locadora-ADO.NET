@@ -56,7 +56,6 @@
     <Compile Include="ILocacaoService.cs" />
     <Compile Include="LocacaoEF .cs" />
     <Compile Include="Locacao.cs" />
-    <Compile Include="Locacao_Films.cs" />
     <Compile Include="ResponseEF.cs" />
     <Compile Include="Response.cs" />
     <Compile Include="Genero.cs" />

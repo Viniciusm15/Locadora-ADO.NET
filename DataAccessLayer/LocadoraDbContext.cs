@@ -22,7 +22,6 @@ namespace DataAccessLayer
         public DbSet<FuncionarioEF> Funcionarios { get; set; }
         public DbSet<GeneroEF> Generos { get; set; }
         public DbSet<LocacaoEF> Locacoes { get; set; }
-        public DbSet<Locacao_Films> locacao_Films { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
