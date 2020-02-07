@@ -19,7 +19,7 @@ namespace BusinessLogicalLayer
             using (LocadoraDbContext db = new LocadoraDbContext())
             {
                 db.Locacoes.Add(locacao);
-
+                db.SaveChanges();
             }
 
             return response;
