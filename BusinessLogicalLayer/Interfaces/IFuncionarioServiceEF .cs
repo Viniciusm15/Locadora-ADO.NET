@@ -8,6 +8,6 @@ namespace Entities
 {
     public interface IFuncionarioServiceEF
     {
-        DataResponse<Funcionario> Autenticar(string email, string senha);
+        DataResponse<FuncionarioEF> Autenticar(string email, string senha);
     }
 }

@@ -367,7 +367,5 @@ namespace BusinessLogicalLayer
                 return dataResponse;
             }
         }
-
     }
-}
 }
