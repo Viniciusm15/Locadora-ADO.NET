@@ -1,4 +1,5 @@
-﻿using DataAccessLayer;
+﻿using BusinessLogicalLayer.Security;
+using DataAccessLayer;
 using Entities;
 using System;
 using System.Collections.Generic;
@@ -305,9 +306,68 @@ namespace BusinessLogicalLayer
             return response;
         }
 
-        public DataResponse<Funcionario> Autenticar(string email, string senha)
+        public DataResponse<FuncionarioEF> Autenticar(string email, string senha)
         {
-            throw new NotImplementedException();
+            Response response = new Response();
+
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                response.Erros.Add("Informe o seu email.");
+            }
+            else
+            {
+                email = EXT.NormatizarEmail(email);
+                if (email.Length < 2 || email.Length > 50)
+                {
+                    response.Erros.Add("O email deve conter entre 2 e 50 caracteres.");
+                }
+                else if (!EXT.IsEmail(email))
+                {
+                    response.Erros.Add("O email deve estar no formato correto.");
+                }
+            }
+
+            if (string.IsNullOrWhiteSpace(senha))
+            {
+                response.Erros.Add("Informe sua senha.");
+            }
+            else
+            {
+                senha = senha.Trim();
+                if (senha.Length < 8 || senha.Length > 15)
+                {
+                    response.Erros.Add("A senha deve conter entre 8 e 15 caracteres.");
+                }
+                else if (!EXT.CorrectPassWord(senha))
+                {
+                    response.Erros.Add("A senha deve estar no formato correto. (Pelo menos uma UpperCase e um caracter especial)");
+                }
+            }
+            using (LocadoraDbContext db = new LocadoraDbContext())
+            {
+
+                List<FuncionarioEF> result = db.Funcionarios.Where(f => f.Email.Contains(email)).Where(f => f.Password.Contains(senha)).Select(f => new FuncionarioEF()
+                {
+                    Email = f.Email,
+                    Password = f.Password
+
+                }).ToList();
+
+                senha = HashUtils.HashPassword(senha);
+
+                DataResponse<FuncionarioEF> dataResponse = new DataResponse<FuncionarioEF>();
+                dataResponse.Data = result;
+                response.Sucesso = true;
+
+                if (dataResponse.Sucesso)
+                {
+                    User.FuncionarioLogado = dataResponse.Data[0];
+                }
+
+                return dataResponse;
+            }
         }
+
     }
+}
 }
