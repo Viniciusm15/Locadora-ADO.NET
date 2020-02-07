@@ -142,7 +142,6 @@ namespace BusinessLogicalLayer
                 {
                     db.Entry<FilmeEF>(item).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
-
                     
                     response.Sucesso = true;
                     return response;
@@ -204,11 +203,13 @@ namespace BusinessLogicalLayer
 
         public DataResponse<FilmeResultSet> GetFilmes()
         {
+            DataResponse<FilmeResultSet> response = new DataResponse<FilmeResultSet>();
+
             using (LocadoraDbContext db = new LocadoraDbContext())
             {
                 try
                 {
-                    List<FilmeResultSet> result = db.Filmes.Select(f => new FilmeResultSet()
+                    List<FilmeResultSet> filmes = db.Filmes.Select(f => new FilmeResultSet()
                     {
                         ID = f.ID,
                         Nome = f.Nome,
@@ -216,14 +217,12 @@ namespace BusinessLogicalLayer
                         Genero = f.Genero.Nome
                     }).ToList();
 
-                    DataResponse<FilmeResultSet> response = new DataResponse<FilmeResultSet>();
-                    response.Data = result;
+                    response.Data = filmes;
                     response.Sucesso = true;
                     return response;
                 }
                 catch (Exception ex)
                 {
-                    DataResponse<FilmeResultSet> response = new DataResponse<FilmeResultSet>();
                     response.Sucesso = false;
 
                     if (ex.Message.Contains("FK"))
@@ -243,17 +242,120 @@ namespace BusinessLogicalLayer
 
         public DataResponse<FilmeResultSet> GetFilmesByName(string nome)
         {
-            throw new NotImplementedException();
+            DataResponse<FilmeResultSet> response = new DataResponse<FilmeResultSet>();
+
+            using (LocadoraDbContext db = new LocadoraDbContext())
+            {
+                try
+                {
+                    List<FilmeResultSet> filmes = db.Filmes.Select(f => new FilmeResultSet()
+                    {
+                        ID = f.ID,
+                        Nome = f.Nome,
+                        Classificacao = f.Classificacao,
+                        Genero = f.Genero.Nome
+                    }).ToList();
+
+                    response.Data = filmes;
+                    response.Sucesso = true;
+                    return response;
+                }
+                catch (Exception ex)
+                {
+                    response.Sucesso = false;
+
+                    if (ex.Message.Contains("FK"))
+                    {
+                        response.Erros.Add("Gênero não encontrado.");
+                    }
+                    else
+                    {
+                        response.Erros.Add("Erro no banco de dados, contate o ADM!");
+                        File.WriteAllText("log.txt", ex.Message);
+                        return response;
+                    }
+                    return response;
+                }
+            }
         }
 
         public DataResponse<FilmeResultSet> GetFilmesByGener(int genero)
         {
-            throw new NotImplementedException();
+            using (LocadoraDbContext db = new LocadoraDbContext())
+            {
+                try
+                {
+                    List<FilmeResultSet> result = db.Filmes.Where(f => f.Genero.Equals(genero)).Select(f => new FilmeResultSet()
+                    {
+                        ID = f.ID,
+                        Nome = f.Nome,
+                        Classificacao = f.Classificacao,
+                        Genero = f.Genero.Nome
+                    }).ToList();
+
+                    DataResponse<FilmeResultSet> response = new DataResponse<FilmeResultSet>();
+                    response.Data = result;
+                    response.Sucesso = true;
+                    return response;
+                }
+                catch (Exception ex)
+                {
+                    DataResponse<FilmeResultSet> response = new DataResponse<FilmeResultSet>();
+                    response.Sucesso = false;
+
+                    if (ex.Message.Contains("FK"))
+                    {
+                        response.Erros.Add("Filme não encontrado.");
+                    }
+                    else
+                    {
+                        response.Erros.Add("Erro no banco de dados, contate o ADM!");
+                        File.WriteAllText("log.txt", ex.Message);
+                        return response;
+                    }
+                    return response;
+                }
+            }
         }
 
         public DataResponse<FilmeResultSet> GetFilmesByClassification(Classificacao classificacao)
         {
-            throw new NotImplementedException();
+            DataResponse<FilmeResultSet> response = new DataResponse<FilmeResultSet>();
+
+            using (LocadoraDbContext db = new LocadoraDbContext())
+            {
+                try
+                {
+                    List<FilmeResultSet> result = db.Filmes.Where(f => f.Classificacao.Equals(classificacao)).Select(f => new FilmeResultSet()
+                    {
+                        ID = f.ID,
+                        Nome = f.Nome,
+                        Classificacao = f.Classificacao,
+                        Genero = f.Genero.Nome
+                    }).ToList();
+
+                    response.Data = result;
+                    response.Sucesso = true;
+                    return response;
+                }
+
+                catch (Exception ex)
+                {
+                    response.Sucesso = false;
+
+                    if (ex.Message.Contains("FK"))
+                    {
+                        response.Erros.Add("Genero não encontrado.");
+                    }
+                    else
+                    {
+                        response.Erros.Add("Erro no banco de dados, contate o ADM!");
+                        File.WriteAllText("log.txt", ex.Message);
+                        return response;
+                    }
+                    return response;
+                }
+            }
         }
 
         private Response Validate(FilmeEF item)
