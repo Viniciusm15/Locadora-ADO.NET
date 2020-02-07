@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using BusinessLogicalLayer;
+using Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +21,7 @@ namespace WFPresentatioLayer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new ClienteService().Insert(new Cliente());
+            new FilmeService().Insert(new FilmeEF());
         }
     }
 }

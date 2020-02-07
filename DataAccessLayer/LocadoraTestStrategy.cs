@@ -15,15 +15,15 @@ namespace DataAccessLayer
             //Código pra criar dados de testes quando a base for recriada
             using (context)
             {
-                Cliente c = new Cliente()
+                FilmeEF filme = new FilmeEF()
                 {
-                    Name = "Necão Bernart",
-                    IsActive = true,
-                    CPF = "901.917.069-41",
-                    Birth_Day = DateTime.Now.AddYears(-55)
+                    Nome = "Necão Bernart",
+                    DataLancamento = DateTime.Now,
+                    Classificacao = Entities.Enums.Classificacao.Dez,
+                    Duracao = 120
                 };
 
-                context.Clientes.Add(c);
+                context.Filmes.Add(filme);
                 context.SaveChanges();
             }
 
