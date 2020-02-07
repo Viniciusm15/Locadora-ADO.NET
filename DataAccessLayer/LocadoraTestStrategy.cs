@@ -27,7 +27,7 @@ namespace DataAccessLayer
                 context.SaveChanges();
             }
 
-            base.Seed(context);
-        }
+        //    base.Seed(context);
+        //}
     }
 }
