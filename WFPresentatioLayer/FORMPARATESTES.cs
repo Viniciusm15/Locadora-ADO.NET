@@ -21,7 +21,15 @@ namespace WFPresentatioLayer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new FilmeService().Insert(new FilmeEF());
+            FilmeEF filme = new FilmeEF()
+            {
+                Nome = "NecaoBernart",
+                DataLancamento = DateTime.Now,
+                Classificacao = Entities.Enums.Classificacao.Dez,
+                Duracao = 120,
+            };
+
+            new FilmeService().Insert(filme);
         }
     }
 }

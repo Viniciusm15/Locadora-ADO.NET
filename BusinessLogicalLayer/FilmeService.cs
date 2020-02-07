@@ -50,7 +50,6 @@ namespace BusinessLogicalLayer
                     return response;
                 }
             }
-
         }
 
         public Response Update(FilmeEF item)
@@ -256,7 +255,7 @@ namespace BusinessLogicalLayer
             {
                 try
                 {
-                    List<FilmeResultSet> filmes = db.Filmes.Select(f => new FilmeResultSet()
+                    List<FilmeResultSet> result = db.Filmes.Where(f => f.Nome.Contains(nome)).Select(f => new FilmeResultSet()
                     {
                         ID = f.ID,
                         Nome = f.Nome,
@@ -264,7 +263,7 @@ namespace BusinessLogicalLayer
                         Genero = f.Genero.Nome
                     }).ToList();
 
-                    response.Data = filmes;
+                    response.Data = result;
                     response.Sucesso = true;
                     return response;
                 }
