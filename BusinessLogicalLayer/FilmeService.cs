@@ -21,10 +21,7 @@ namespace BusinessLogicalLayer
             {
                 try
                 {
-
-                    FilmeEF filme = db.Filmes.Find(id);
-
-                    //List<FilmeEF> result = db.Filmes.Select(f => new FilmeEF()
+                    // List<FilmeEF> result = db.Filmes.Select(f => new FilmeEF()
                     //{
                     //    ID = f.ID,
                     //    Nome = f.Nome,
@@ -33,31 +30,28 @@ namespace BusinessLogicalLayer
                     //    Duracao = f.Duracao,
                     //    GeneroID = f.GeneroID,
                     //    Genero = f.Genero
-                       
-                   // }).ToList();
 
+                    // }).ToList();
+
+                    FilmeEF filme = db.Filmes.Find(id);
+
+                    List<FilmeEF> filmes = new List<FilmeEF>();
+                    filmes.Add(filme);
+
+                    dResponse.Data = filmes;
                     dResponse.Sucesso = true;
                     return dResponse;
                 }
                 catch (Exception ex)
                 {
-                    
-                    dResponse.Sucesso = false;
+                    //Logar o erro pro ADM ter acesso.
+                    File.WriteAllText("log.txt", ex.Message);
 
-                    if (ex.Message.Contains("FK"))
-                    {
-                        dResponse.Erros.Add("Gênero não encontrado.");
-                    }
-                    else
-                    {
-                        dResponse.Erros.Add("Erro no banco de dados, contate o ADM!");
-                        File.WriteAllText("log.txt", ex.Message);
-                        return dResponse;
-                    }
+                    dResponse.Sucesso = false;
+                    dResponse.Erros.Add("Falha ao acessar o banco de dados, contate o suporte.");
                     return dResponse;
                 }
             }
-
         }
 
         public DataResponse<FilmeEF> GetData()
@@ -191,42 +185,38 @@ namespace BusinessLogicalLayer
             }
         }
 
-        public Response Delete(FilmeEF item)
+        public Response Delete(int id)
         {
-            Response response = Validate(item);
-
-            if (response.Erros.Count > 0)
-            {
-                response.Sucesso = false;
-                return response;
-            }
+            DataResponse<FilmeEF> dResponse = new DataResponse<FilmeEF>();
 
             using (LocadoraDbContext db = new LocadoraDbContext())
             {
                 try
                 {
-                    db.Entry<FilmeEF>(item).State = System.Data.Entity.EntityState.Deleted;
-                    db.SaveChanges();
+                    FilmeEF filme = db.Filmes.Find(id);
 
+                    List<FilmeEF> filmes = new List<FilmeEF>();
+                    filmes.Add(filme);
 
-                    response.Sucesso = true;
-                    return response;
+                    dResponse.Data = filmes;
+                    dResponse.Sucesso = true;
+                    return dResponse;
                 }
                 catch (Exception ex)
                 {
-                    response.Sucesso = false;
+                    dResponse.Sucesso = false;
 
-                    if (ex.Message.Contains("FK"))
+                    if (ex.Message.Contains("LOCACAOES_FILMES"))
                     {
-                        response.Erros.Add("Filme não deletado.");
+                        dResponse.Erros.Add("Filme não pode ser excluído, pois não há locações.");
                     }
                     else
                     {
-                        response.Erros.Add("Erro no banco de dados, contate o ADM!");
+                        dResponse.Erros.Add("Erro no banco de dados, contate o ADM!");
                         File.WriteAllText("log.txt", ex.Message);
-                        return response;
+                        return dResponse;
                     }
-                    return response;
+                    return dResponse;
                 }
             }
         }
@@ -317,11 +307,6 @@ namespace BusinessLogicalLayer
             }
 
             return response;
-        }
-
-        public Response Delete(int id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

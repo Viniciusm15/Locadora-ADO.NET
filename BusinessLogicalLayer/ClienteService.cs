@@ -22,11 +22,7 @@ namespace BusinessLogicalLayer
 
         public Response Insert(ClienteEF item)
         {
-            // ---- 
-            using (LocadoraDbContext db = new LocadoraDbContext())
-            {
-
-            }
+            throw new NotImplementedException();
         }
 
         public Response Update(ClienteEF item)
