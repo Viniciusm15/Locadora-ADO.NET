@@ -50,7 +50,7 @@ namespace BusinessLogicalLayer
             {
                 try
                 {
-                    List<FilmeEF> result = db.Filmes.Select(f => new FilmeEF()
+                    List<FilmeEF> filmes = db.Filmes.Select(f => new FilmeEF()
                     {
                         ID = f.ID,
                         Nome = f.Nome,
@@ -62,6 +62,7 @@ namespace BusinessLogicalLayer
 
                     }).ToList();
 
+                    dResponse.Data = filmes;
                     dResponse.Sucesso = true;
                     return dResponse;
                 }
