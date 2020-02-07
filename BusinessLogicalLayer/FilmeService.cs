@@ -21,18 +21,6 @@ namespace BusinessLogicalLayer
             {
                 try
                 {
-                    // List<FilmeEF> result = db.Filmes.Select(f => new FilmeEF()
-                    //{
-                    //    ID = f.ID,
-                    //    Nome = f.Nome,
-                    //    Classificacao = f.Classificacao,
-                    //    DataLancamento = f.DataLancamento,
-                    //    Duracao = f.Duracao,
-                    //    GeneroID = f.GeneroID,
-                    //    Genero = f.Genero
-
-                    // }).ToList();
-
                     FilmeEF filme = db.Filmes.Find(id);
 
                     List<FilmeEF> filmes = new List<FilmeEF>();
@@ -111,35 +99,27 @@ namespace BusinessLogicalLayer
             {
                 try
                 {
-                    List<FilmeResultSet> result = db.Filmes.Select(f => new FilmeResultSet()
-                    {
-                        ID = f.ID,
-                        Nome = f.Nome,
-                        Classificacao = f.Classificacao,
-                        Genero = f.Genero.Nome
-                    }).ToList();
+                    db.Filmes.Add(item);
+                    db.SaveChanges();
 
-                    DataResponse<FilmeResultSet> dResponse = new DataResponse<FilmeResultSet>();
-                    dResponse.Data = result;
-                    dResponse.Sucesso = true;
-                    return dResponse;
+                    response.Sucesso = true;
+                    return response;
                 }
                 catch (Exception ex)
                 {
-                    DataResponse<FilmeResultSet> dResponse = new DataResponse<FilmeResultSet>();
-                    dResponse.Sucesso = false;
+                    response.Sucesso = false;
 
                     if (ex.Message.Contains("FK"))
                     {
-                        dResponse.Erros.Add("Gênero não encontrado.");
+                        response.Erros.Add("Gênero não encontrado.");
                     }
                     else
                     {
-                        dResponse.Erros.Add("Erro no banco de dados, contate o ADM!");
+                        response.Erros.Add("Erro no banco de dados, contate o ADM!");
                         File.WriteAllText("log.txt", ex.Message);
-                        return dResponse;
+                        return response;
                     }
-                    return dResponse;
+                    return response;
                 }
             }
 
