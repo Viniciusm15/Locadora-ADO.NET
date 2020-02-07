@@ -12,7 +12,7 @@ namespace DataAccessLayer
 {
     public class LocadoraDbContext : DbContext
     {
-        public LocadoraDbContext():base(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C: \Users\900208\Documents\LocadoraDB.mdf;Integrated Security=True;Connect Timeout=5")
+        public LocadoraDbContext():base(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\900208\Documents\LocadoraDB.mdf;Integrated Security=True;Connect Timeout=5")
         {
             Database.SetInitializer(new LocadoraTestStrategy());
         }

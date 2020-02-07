@@ -10,24 +10,24 @@ namespace DataAccessLayer
 {
     class LocadoraTestStrategy : DropCreateDatabaseAlways<LocadoraDbContext>
     {
-        //protected override void Seed(LocadoraDbContext context)
-        //{
-        //    //Código pra criar dados de testes quando a base for recriada
-        //    using (context)
-        //    {
-        //        Cliente c = new Cliente()
-        //        {
-        //            Name = "Necão Bernart",
-        //            IsActive = true,
-        //            CPF = "901.917.069-41",
-        //            Birth_Day = DateTime.Now.AddYears(-55)
-        //        };
+        protected override void Seed(LocadoraDbContext context)
+        {
+            //Código pra criar dados de testes quando a base for recriada
+            using (context)
+            {
+                FilmeEF filme = new FilmeEF()
+                {
+                    Nome = "Necão Bernart",
+                    DataLancamento = DateTime.Now,
+                    Classificacao = Entities.Enums.Classificacao.Dez,
+                    Duracao = 120
+                };
 
-        //        context.Clientes.Add(c);
-        //        context.SaveChanges();
-        //    }
+                context.Filmes.Add(filme);
+                context.SaveChanges();
+            }
 
-        //    base.Seed(context);
-        //}
+            base.Seed(context);
+        }
     }
 }

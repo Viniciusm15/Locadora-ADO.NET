@@ -21,7 +21,7 @@ namespace WFPresentatioLayer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new ClienteService().Insert(new ClienteEF());
+            new FilmeService().Insert(new FilmeEF());
         }
     }
 }

@@ -9,16 +9,6 @@ namespace BusinessLogicalLayer
 {
     public class FuncionarioService : IEntityCRUDEF<FuncionarioEF>, IFuncionarioServiceEF
     {
-        public DataResponse<FuncionarioEF> GetByID(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public DataResponse<FuncionarioEF> GetData()
-        {
-            throw new NotImplementedException();
-        }
-
         public Response Insert(FuncionarioEF item)
         {
             throw new NotImplementedException();
@@ -28,7 +18,18 @@ namespace BusinessLogicalLayer
         {
             throw new NotImplementedException();
         }
+
         public Response Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DataResponse<FuncionarioEF> GetByID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DataResponse<FuncionarioEF> GetData()
         {
             throw new NotImplementedException();
         }
