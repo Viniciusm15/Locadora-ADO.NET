@@ -183,19 +183,78 @@ namespace BusinessLogicalLayer
 
         public Response Update(ClienteEF item)
         {
-            Response response = new Response();
-            if (response.Erros.Count != 0)
+
+            Response response = Validate(item);
+
+            if (response.Erros.Count > 0)
             {
                 response.Sucesso = false;
                 return response;
             }
 
-            return Cl.Update(item);
+            using (LocadoraDbContext db = new LocadoraDbContext())
+            {
+                try
+                {
+                    db.Entry<ClienteEF>(item).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+
+                    response.Sucesso = true;
+                    return response;
+                }
+                catch (Exception ex)
+                {
+                    response.Sucesso = false;
+
+                    if (ex.Message.Contains("FK"))
+                    {
+                        response.Erros.Add("Filme não encontrado.");
+                    }
+                    else
+                    {
+                        response.Erros.Add("Erro no banco de dados, contate o ADM!");
+                        File.WriteAllText("log.txt", ex.Message);
+                        return response;
+                    }
+                    return response;
+                }
+            }
         }
 
         public Response Delete(int id)
         {
-            throw new NotImplementedException();
+            DataResponse<ClienteEF> dResponse = new DataResponse<ClienteEF>();
+
+            using (LocadoraDbContext db = new LocadoraDbContext())
+            {
+                try
+                {
+                    ClienteEF cliente = db.Clientes.Find(id);
+
+                    List<ClienteEF> clientes = new List<ClienteEF>();
+                    clientes.Add(cliente);
+
+                    dResponse.Data = clientes;
+                    dResponse.Sucesso = true;
+                    return dResponse;
+                }
+                catch (Exception ex)
+                {
+                    dResponse.Sucesso = false;
+
+                    if (ex.Message.Contains("LOCACAOES_FILMES"))
+                    {
+                        dResponse.Erros.Add("Filme não pode ser excluído, pois não há locações.");
+                    }
+                    else
+                    {
+                        dResponse.Erros.Add("Erro no banco de dados, contate o ADM!");
+                        File.WriteAllText("log.txt", ex.Message);
+                        return dResponse;
+                    }
+                    return dResponse;
+                }
+            }
         }
     }
 }
