@@ -142,7 +142,6 @@ namespace BusinessLogicalLayer
                 {
                     db.Entry<FilmeEF>(item).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
-
                     
                     response.Sucesso = true;
                     return response;
@@ -204,11 +203,13 @@ namespace BusinessLogicalLayer
 
         public DataResponse<FilmeResultSet> GetFilmes()
         {
+            DataResponse<FilmeResultSet> response = new DataResponse<FilmeResultSet>();
+
             using (LocadoraDbContext db = new LocadoraDbContext())
             {
                 try
                 {
-                    List<FilmeResultSet> result = db.Filmes.Select(f => new FilmeResultSet()
+                    List<FilmeResultSet> filmes = db.Filmes.Select(f => new FilmeResultSet()
                     {
                         ID = f.ID,
                         Nome = f.Nome,
@@ -216,14 +217,12 @@ namespace BusinessLogicalLayer
                         Genero = f.Genero.Nome
                     }).ToList();
 
-                    DataResponse<FilmeResultSet> response = new DataResponse<FilmeResultSet>();
-                    response.Data = result;
+                    response.Data = filmes;
                     response.Sucesso = true;
                     return response;
                 }
                 catch (Exception ex)
                 {
-                    DataResponse<FilmeResultSet> response = new DataResponse<FilmeResultSet>();
                     response.Sucesso = false;
 
                     if (ex.Message.Contains("FK"))
