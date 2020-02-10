@@ -19,7 +19,6 @@ namespace DataAccessLayer
                 Nome = "Suspense"
             };
 
-
             FilmeEF filme = new FilmeEF()
             {
                 Nome = "Necão Bernart",
