@@ -16,7 +16,7 @@ namespace Entities
         public int Duracao { get; set; }
         public int? GeneroID { get; set; }
         public virtual Genero Genero { get; set; }
-        public ICollection<LocacaoEF> locacaos { get; set; }
+        public virtual ICollection<LocacaoEF> locacaos { get; set; }
 
         public FilmeEF()
         {

@@ -13,8 +13,6 @@ namespace BusinessLogicalLayer.Mappings
         public LocacaoMapConfig()
         {
             this.ToTable("LOCACOES");
-            //this.Property(l => l.Cliente);
-            //this.Property(l => l.Funcionario);
             this.Property(l => l.Preco).HasColumnType("float");
             this.Property(l => l.DataLocacao).HasColumnType("datetime2");
             this.Property(l => l.DataDevolucaoPrevista).HasColumnType("datetime2");
