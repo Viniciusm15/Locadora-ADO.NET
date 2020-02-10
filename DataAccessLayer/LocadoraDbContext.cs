@@ -17,7 +17,7 @@ namespace DataAccessLayer
             Database.SetInitializer(new LocadoraTestStrategy());
         }
 
-        public DbSet<FilmeEF> Filmes{ get; set; }
+        public DbSet<FilmeEF> Filmes { get; set; }
         public DbSet<ClienteEF> Clientes { get; set; }
         public DbSet<FuncionarioEF> Funcionarios { get; set; }
         public DbSet<GeneroEF> Generos { get; set; }
@@ -26,6 +26,7 @@ namespace DataAccessLayer
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
             modelBuilder.Configurations
                         .AddFromAssembly(Assembly.GetExecutingAssembly());

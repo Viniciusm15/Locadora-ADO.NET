@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicalLayer.Mappings
 {
-    internal class FilmeMapConfig : EntityTypeConfiguration<Filme>
+    internal class FilmeMapConfig : EntityTypeConfiguration<FilmeEF>
     {
         public FilmeMapConfig()
         {

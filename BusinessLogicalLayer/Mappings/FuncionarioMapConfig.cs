@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicalLayer.Mappings
 {
-    internal class FuncionarioMapConfig : EntityTypeConfiguration<Funcionario>
+    internal class FuncionarioMapConfig : EntityTypeConfiguration<FuncionarioEF>
     {
         public FuncionarioMapConfig()
         {

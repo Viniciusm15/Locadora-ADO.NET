@@ -362,7 +362,7 @@ namespace BusinessLogicalLayer
 
                 if (dataResponse.Sucesso)
                 {
-                    User.FuncionarioLogado = dataResponse.Data[0];
+                    UserEF.FuncionarioLogado = dataResponse.Data[0];
                 }
 
                 return dataResponse;

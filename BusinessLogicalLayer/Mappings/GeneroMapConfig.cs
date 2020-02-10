@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicalLayer.Mappings
 {
-    internal class GeneroMapConfig : EntityTypeConfiguration<Genero>
+    internal class GeneroMapConfig : EntityTypeConfiguration<GeneroEF>
     {
         public GeneroMapConfig()
         {

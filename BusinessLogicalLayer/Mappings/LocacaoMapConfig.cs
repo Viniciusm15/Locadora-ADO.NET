@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicalLayer.Mappings
 {
-    internal class LocacaoMapConfig : EntityTypeConfiguration<Locacao>
+    internal class LocacaoMapConfig : EntityTypeConfiguration<LocacaoEF>
     {
         public LocacaoMapConfig()
         {

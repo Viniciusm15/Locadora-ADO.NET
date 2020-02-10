@@ -10,6 +10,6 @@ namespace BusinessLogicalLayer.Security
     public class User
     {
         //Como esta propriedade é estática, ela nunca morrerá em uma aplicação Desktop.
-        public static FuncionarioEF FuncionarioLogado { get; set; }
+        public static Funcionario FuncionarioLogado { get; set; }
     }
 }

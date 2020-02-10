@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicalLayer.Mappings
 {
-    internal class ClienteMapConfig : EntityTypeConfiguration<Cliente>
+    internal class ClienteMapConfig : EntityTypeConfiguration<ClienteEF>
     {
         public ClienteMapConfig()
         {
