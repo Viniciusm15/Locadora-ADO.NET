@@ -13,15 +13,23 @@ namespace DataAccessLayer
         protected override void Seed(LocadoraDbContext context)
         {
             //Código pra criar dados de testes quando a base for recriada
-            
+
+            GeneroEF g = new GeneroEF()
+            {
+                Nome = "Suspense"
+            };
+
+
             FilmeEF filme = new FilmeEF()
             {
                 Nome = "Necão Bernart",
                 DataLancamento = DateTime.Now,
                 Classificacao = Entities.Enums.Classificacao.Dez,
-                Duracao = 120
+                Duracao = 120,
+                Genero = g
             };
 
+            context.Generos.Add(g);
             context.Filmes.Add(filme);
             context.SaveChanges();
 

@@ -27,9 +27,7 @@ namespace DataAccessLayer
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-
-            modelBuilder.Configurations
-                        .AddFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
 
             modelBuilder.Properties()
                         .Where(c => c.PropertyType == typeof(string))

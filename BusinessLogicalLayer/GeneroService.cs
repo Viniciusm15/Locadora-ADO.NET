@@ -88,6 +88,7 @@ namespace BusinessLogicalLayer
                 }
             }
         }
+
         public Response Delete(int id)
         {
             DataResponse<GeneroEF> dResponse = new DataResponse<GeneroEF>();
