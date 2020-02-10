@@ -172,7 +172,7 @@ namespace BusinessLogicalLayer
                     //Logar o erro pro ADM ter acesso.
                     File.WriteAllText("log.txt", ex.Message);
 
-                    DataResponse<Funcionario> dataResponse = new DataResponse<Funcionario>();
+                    DataResponse<FuncionarioEF> dataResponse = new DataResponse<FuncionarioEF>();
                     dataResponse.Sucesso = false;
                     dataResponse.Erros.Add("Falha ao acessar o banco de dados, contate o suporte.");
                     return dResponse;

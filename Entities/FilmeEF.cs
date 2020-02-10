@@ -15,7 +15,7 @@ namespace Entities
         public Classificacao Classificacao { get; set; }
         public int Duracao { get; set; }
         public int? GeneroID { get; set; }
-        public virtual Genero Genero { get; set; }
+        public virtual GeneroEF Genero { get; set; }
         public virtual ICollection<LocacaoEF> locacaos { get; set; }
 
         public FilmeEF()
@@ -23,7 +23,7 @@ namespace Entities
 
         }
 
-        public FilmeEF(int iD, string nome, DateTime dataLancamento, Classificacao classificacao, int duracao, int generoid, Genero genero)
+        public FilmeEF(int iD, string nome, DateTime dataLancamento, Classificacao classificacao, int duracao, int generoid, GeneroEF genero)
         {
             ID = iD;
             Nome = nome;
