@@ -14,6 +14,7 @@ namespace BusinessLogicalLayer.Mappings
         {
             this.ToTable("GENERS");
             this.Property(g => g.Nome).HasMaxLength(40);
+            this.HasIndex(c => c.Nome).IsUnique(true);
         }
     }
 }
