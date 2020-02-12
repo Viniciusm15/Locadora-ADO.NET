@@ -11,6 +11,7 @@ namespace Entities
     {
         public int ID { get; set; }
         public string Nome { get; set; }
+        public virtual ICollection<FilmeEF> Filmes {get; set;}
 
         public GeneroEF()
         {
