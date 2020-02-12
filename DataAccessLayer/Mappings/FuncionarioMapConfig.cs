@@ -16,7 +16,9 @@ namespace BusinessLogicalLayer.Mappings
             this.Property(f => f.Name).HasMaxLength(100);
             this.Property(f => f.BirthDate).HasColumnType("date");
             this.Property(f => f.CPF).IsFixedLength().HasMaxLength(14);
+            this.HasIndex(f => f.CPF).IsUnique(true);
             this.Property(f => f.Email).HasMaxLength(50);
+            this.HasIndex(f => f.Email).IsUnique(true);
             this.Property(f => f.Telephone).HasMaxLength(15);
             this.Property(f => f.Password).HasMaxLength(100);
             this.Property(f => f.IsActive).HasColumnType("bit");
